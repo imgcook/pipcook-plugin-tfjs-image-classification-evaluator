@@ -25,8 +25,8 @@ const ModelEvalute: ModelEvaluateType =
 
       for (let i = 0; i < batches; i++) {
         const dataBatch = await data.testLoader.nextBatch(batchSize);
-        const xs = tf.stack(dataBatch.map((ele) => ele.data));
-        const ys = tf.stack(dataBatch.map((ele) => ele.label));
+        const xs = tf.tidy(() => tf.stack(dataBatch.map((ele) => ele.data)));
+        const ys = tf.tidy(() => tf.stack(dataBatch.map((ele) => ele.label)));
         const evaluateRes = await model.model.evaluate(xs, ys);
         loss += Number(evaluateRes[0].dataSync());
         accuracy += Number(evaluateRes[1].dataSync());
