@@ -1,6 +1,6 @@
 import { ImageDataset, ModelEvaluateType, UniModel, EvaluateResult } from '@pipcook/pipcook-core';
 
-import * as tf from '@tensorflow/tfjs-node-gpu';
+import * as tf from '@tensorflow/tfjs-node';
 
 /**
  *
